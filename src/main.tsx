@@ -12,7 +12,7 @@ const rootRender = async () => {
 
   root.render(
     <StrictMode>
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/react-deploy/">
         <GlobalStyle />
         <App />
       </BrowserRouter>
