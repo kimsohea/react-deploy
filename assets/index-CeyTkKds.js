@@ -1,0 +1,9 @@
+import{s as i,j as s}from"./index-COP1spTv.js";const n=i.section`
+  display: flex;
+  flex-wrap: wrap;
+
+  .info_cate {
+    display: block;
+    width: 100%;
+  }
+`,l=i.section``,r=i.section``,c=()=>s.jsxs(s.Fragment,{children:[s.jsxs(n,{children:[s.jsx("p",{className:"info_cate"}),s.jsx("figure",{children:s.jsx("img",{src:"/",alt:""})}),s.jsxs("ul",{children:[s.jsx("li",{children:s.jsx("p",{children:"2023 한국문학 독서기록장 (한국문학의 얼굴들 대상도서 포함, 소설/시 3만원 이상)"})}),s.jsx("li",{children:s.jsx("p",{children:"나는 오래된 거리처럼 너를 사랑하고"})}),s.jsx("li",{children:s.jsxs("p",{children:[s.jsx("strong",{children:"정가"}),"12,000원"]})}),s.jsx("li",{children:s.jsxs("p",{children:[s.jsx("strong",{children:"판매가"}),"10,800원 (10%, 1,200원 할인)"]})}),s.jsx("li",{children:s.jsxs("p",{children:[s.jsx("strong",{children:"마일리지"}),"600원(5%) + 멤버십(3~1%) + 5만원이상 구매시 2,000원"]})}),s.jsx("li",{children:s.jsxs("p",{children:[s.jsx("strong",{children:"배송료"}),"신간도서 단 1권도 무료"]})}),s.jsx("li",{children:s.jsxs("p",{children:[s.jsx("strong",{children:"수령예상일"}),"밤 10시까지 주문하면 내일 아침 7시 출근전 배송(중구 서소문로 89-31 기준) 지역변경"]})}),s.jsx("li",{children:s.jsx("p",{children:"소설/시/희곡 주간 16위, 종합 top10 5주|Sales Point : 88,090"})}),s.jsxs("li",{children:[s.jsx("img",{src:"/",alt:""}),s.jsx("p",{children:"100자평(11) 리뷰(3)"})]}),s.jsxs("li",{children:[s.jsx("p",{children:"카드/간편결제 할인"}),s.jsx("p",{children:"무이자 할부"}),s.jsx("p",{children:"소득공제 570원"})]}),s.jsxs("li",{children:[s.jsx("button",{children:"바로구매"}),s.jsx("button",{children:"장바구니"})]}),s.jsxs("li",{children:[s.jsx("button",{children:"중고 등록알림 신청"}),s.jsx("button",{children:"중고로 팔기"})]})]})]}),s.jsx(l,{}),s.jsxs(r,{children:[s.jsx("figure",{children:s.jsx("img",{src:"/",alt:""})}),s.jsxs("div",{className:"pop",children:[s.jsx("button",{children:"바로구매"}),s.jsx("button",{children:"장바구니"})]})]})]}),d=c;export{d as default};
