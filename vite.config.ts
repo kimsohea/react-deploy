@@ -7,6 +7,7 @@ const srcRoot = join(__dirname, 'src');
 // https://vitejs.dev/config/
 export default defineConfig({
   root: srcRoot,
+  base: "/react-deploy/",
   plugins: [react()],
   resolve: {
     alias: {
