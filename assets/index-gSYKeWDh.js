@@ -1,4 +1,4 @@
-import{a as Le,s as J,j as M,L as Ye,r as z,R as V}from"./index-COP1spTv.js";const ge=async t=>{const e=await Le.get(`https://api.github.com/repos/kimsohea/aladin-images/contents/${t}`),i=e.data;if(e.status===200)return i.filter(({name:s})=>/\.(webp)$/.test(s));throw new Error("Failed to fetch content")},Xe=async(t,e)=>{const i=await Le.get(`https://raw.githubusercontent.com/kimsohea/aladin-images/main/${t}/${t}${e}CommonProducts.json`),s=i.data;return i.status===200?s:null},Ue=J.section`
+import{a as Le,s as J,j as M,L as Ye,r as z,R as V}from"./index-N_U0NTWH.js";const ge=async t=>{const e=await Le.get(`https://api.github.com/repos/kimsohea/aladin-images/contents/${t}`),i=e.data;if(e.status===200)return i.filter(({name:s})=>/\.(webp)$/.test(s));throw new Error("Failed to fetch content")},Xe=async(t,e)=>{const i=await Le.get(`https://raw.githubusercontent.com/kimsohea/aladin-images/main/${t}/${t}${e}CommonProducts.json`),s=i.data;return i.status===200?s:null},Ue=J.section`
   display: block;
   text-align: center;
 `,Ke=J.strong`
