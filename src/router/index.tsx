@@ -9,9 +9,6 @@ const Home = lazy(() => import("@/pages/Home"));
 const BookCategory = lazy(() => import("@/pages/Categories"));
 const ProductInfo = lazy(() => import("@/pages/ProductInfo"));
 
-// pages: libraries
-const NotFound = lazy(() => import("@/pages/NotFound"));
-
 const Router = () =>
   useRoutes([
     {
@@ -41,10 +38,6 @@ const Router = () =>
           element: <ProductInfo />,
         },
       ],
-    },
-    {
-      path: "*",
-      element: <NotFound />,
     },
   ]);
 
