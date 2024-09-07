@@ -2,13 +2,6 @@ import axios from "axios";
 import { ImgListType } from "@/types/images";
 import { CommonProdListType } from "@/types/products";
 
-export const fetchGitHubFile = async (file: string) => {
-  const response = await axios.get(
-    `https://raw.githubusercontent.com/kimsohea/aladin-images/main/${file}`
-  );
-  return response.status === 200 ? response.data : null;
-};
-
 export const fetchGitHubImages = async (folder: string) => {
   const response = await axios.get(
     `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`
