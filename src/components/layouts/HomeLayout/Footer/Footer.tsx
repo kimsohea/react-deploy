@@ -1,11 +1,13 @@
-import { FooterWrap } from './Footer.styled';
+import { FooterWrap } from "./Footer.styled";
 
-const Footer = () => {
+type footerProp = {
+  className: string;
+};
+
+const Footer = ({ className }: footerProp) => {
   return (
-    <FooterWrap>
-      <div className="footer_wrap">
-        footer 템플릿
-      </div>
+    <FooterWrap className={className}>
+      <div className="footer_wrap">footer 템플릿</div>
     </FooterWrap>
   );
 };

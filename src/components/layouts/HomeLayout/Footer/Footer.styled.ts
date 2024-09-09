@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FooterWrap = styled.footer`
   min-width: 110rem;
@@ -10,6 +10,10 @@ export const FooterWrap = styled.footer`
     justify-content: space-between;
     padding: 4.5rem 0;
     margin: 0 auto;
+  }
+
+  &.active {
+    display: none;
   }
 
   @media screen and (max-width: 1080px) {

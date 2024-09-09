@@ -1,17 +1,21 @@
-import { Outlet } from 'react-router-dom';
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-import { Header, Footer } from '../HomeLayout';
+import { Header, Footer, MobileCategory } from "../HomeLayout";
 
-import { Main } from './RouteLayout.styled';
+import { Main } from "./RouteLayout.styled";
 
 const RouteLayout = () => {
+  const [activeCate, setActiveCate] = useState<boolean>(false);
+
   return (
     <>
       <Header />
-      <Main>
+      <MobileCategory isActive={activeCate} setIsActive={setActiveCate} />
+      <Main className={activeCate ? "active" : ""}>
         <Outlet />
       </Main>
-      <Footer />
+      <Footer className={activeCate ? "active" : ""} />
     </>
   );
 };
