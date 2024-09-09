@@ -2,9 +2,16 @@ import axios from "axios";
 import { ImgListType } from "@/types/images";
 import { CommonProdListType } from "@/types/products";
 
+const tocken = import.meta.env.VITE_GITGUB_TOCKEN;
+
 export const fetchGitHubImages = async (folder: string) => {
   const response = await axios.get(
-    `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`
+    `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`,
+    {
+      headers: {
+        Authorization: `tocken ${tocken}`,
+      },
+    }
   );
 
   // TypeScript에 데이터 타입을 명시
