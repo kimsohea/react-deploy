@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchGitHubImages } from "@/utils/fetchUtils";
+import { fetchGitHubImages, fetchAladinProductList } from "@/utils/fetchUtils";
 
 import { ImgType, ImgNameListType } from "@/types/images";
 
@@ -31,6 +31,7 @@ const Home = () => {
       }));
       setImages(tmpArr);
     });
+    fetchAladinProductList();
   }, []);
 
   return (

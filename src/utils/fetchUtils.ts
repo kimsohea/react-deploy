@@ -2,6 +2,9 @@ import axios from "axios";
 import { ImgListType } from "@/types/images";
 import { CommonProdListType } from "@/types/products";
 
+const githubKey = "tocken " + import.meta.env.VITE_GITGUB_TOCKEN;
+const aladinKey = import.meta.env.VITE_ALADIN_TTBKEY;
+
 export const fetchGitHubFile = async (file: string) => {
   const response = await axios.get(
     `https://raw.githubusercontent.com/kimsohea/aladin-images/main/${file}`
@@ -11,7 +14,12 @@ export const fetchGitHubFile = async (file: string) => {
 
 export const fetchGitHubImages = async (folder: string) => {
   const response = await axios.get(
-    `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`
+    `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`,
+    {
+      headers: {
+        Authorization: githubKey,
+      },
+    }
   );
 
   // TypeScript에 데이터 타입을 명시
@@ -30,4 +38,12 @@ export const fetchGitHubCommonJson = async (folder: string, file: string) => {
 
   const products: CommonProdListType = response.data;
   return response.status === 200 ? products : null;
+};
+
+export const fetchAladinProductList = async () => {
+  const response = await axios.get(
+    `aladin/ItemList.aspx?ttbkey=${aladinKey}&QueryType=ItemNewAll&SearchTarget=Book&output=js&Version=20131101`
+  );
+  console.log(response);
+  return response.status === 200 ? response.data : null;
 };
