@@ -1,19 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { CategoryContext } from "@/context/CategoryContext";
 
-import { HeaderWrap, HeaderBuffer } from "./Header.styled";
+import { HeaderWrap, HeaderBuffer, MobileCategories } from "./Header.styled";
 import HeaderLogo from "@/assets/logo.jpg";
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
-
-  return null;
-};
-
-const Header = () => {
+export const Header = () => {
   // context
   const { state } = useContext(CategoryContext);
   const { category } = state;
@@ -39,8 +31,9 @@ const Header = () => {
 
   return (
     <>
-      <HeaderWrap>
-        <ScrollToTop />
+      <HeaderWrap
+        className={activeIdx !== 99 && activeIdx !== null ? "active" : ""}
+      >
         <nav className="header_wrap">
           <h1 className="header_logo">
             <Link to="/">
@@ -136,4 +129,112 @@ const Header = () => {
     </>
   );
 };
-export default Header;
+
+type MobileCateProps = {
+  isActive: boolean;
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const MobileCategory = ({ isActive, setIsActive }: MobileCateProps) => {
+  // context
+  const { state } = useContext(CategoryContext);
+  const { category } = state;
+
+  // use state
+  const [activeIdx1, setActiveIdx1] = useState<number | null>(null);
+  const [activeIdx2, setActiveIdx2] = useState<number | null>(null);
+
+  // idx를 인자로 받아 해당 인덱스를 activeIdx로 설정하는 이벤트 핸들러 반환
+  const handleActiveIdx = (idx1: number, idx2: number) => () => {
+    if (idx1 !== activeIdx1) {
+      setActiveIdx1(idx1);
+      setActiveIdx2(idx2);
+    } else if (idx1 === activeIdx1 && idx2 !== activeIdx2) {
+      setActiveIdx2(idx2);
+    } else if (idx1 === activeIdx1 && idx2 === activeIdx2) {
+      setActiveIdx1(99);
+      setActiveIdx2(99);
+    }
+  };
+
+  useEffect(() => {
+    if (isActive) window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [isActive]);
+
+  return (
+    <>
+      <MobileCategories className={isActive ? "active" : ""}>
+        <button
+          className="cate_btn"
+          onClick={() => setIsActive(!isActive)}
+        ></button>
+        <nav className="cate_mobile">
+          <h1 className="cate_logo" onClick={() => setIsActive(!isActive)}>
+            <Link to="/">
+              <img src={HeaderLogo} alt="Aladin Logo" />
+            </Link>
+          </h1>
+          <ul className="cate_myinfo">
+            <li>
+              <a onClick={(e) => e.preventDefault()}>마이페이지</a>
+            </li>
+            <li>
+              <a onClick={(e) => e.preventDefault()}>로그인</a>
+            </li>
+            <li>
+              <a onClick={(e) => e.preventDefault()}>회원가입</a>
+            </li>
+            <li>
+              <a onClick={(e) => e.preventDefault()}>장바구니</a>
+            </li>
+          </ul>
+          {category && category.length > 0 && (
+            <ul className="cate_list">
+              {category.map((cate01, idx1) => (
+                <li key={cate01.categoryName}>
+                  <Link to={`/category/${cate01.categoryName}`}>
+                    {cate01.label}
+                  </Link>
+                  {cate01.children.length > 0 && (
+                    <ul>
+                      {cate01.children.map((cate02, idx2) => (
+                        <li
+                          key={`category_${cate02.label}`}
+                          onClick={handleActiveIdx(idx1, idx2)}
+                          className={
+                            cate02.children?.length === 0
+                              ? ""
+                              : activeIdx1 === idx1 && activeIdx2 === idx2
+                                ? "has_child active"
+                                : "has_child"
+                          }
+                        >
+                          {cate02.categoryName && (
+                            <Link to={`/category/${cate02.categoryName}`}>
+                              {cate02.label}
+                            </Link>
+                          )}
+                          {cate02.children?.length > 0 && (
+                            <ul>
+                              {cate02.children.map((cate03, idx2) => (
+                                <li key={`${cate03.label}-${idx2}`}>
+                                  <Link to={`/category/${cate02.categoryName}`}>
+                                    {cate03.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </nav>
+      </MobileCategories>
+    </>
+  );
+};
