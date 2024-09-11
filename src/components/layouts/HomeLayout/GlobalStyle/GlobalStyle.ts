@@ -186,11 +186,18 @@ export const Section = styled.section`
       font-size: 1.4rem;
       font-weight: 300;
     }
-  }
 
-  .swiper_btnlist {
-    .swiper-slide {
-      display: flex;
+
+    &.btn {
+      .swiper-slide {
+        display: flex;
+       column-gap: 15px;
+
+       a {
+        display: block;
+        width: 25%;
+       }
+      }
     }
   }
 

@@ -144,6 +144,7 @@ export const SwiperPage = styled.ul<{ className: string }>`
 
     &.swiper-pagination-bullet-active {
       font-weight: 700;
+      letter-spacing: 0.025px;
 
       &:before {
         display: block;

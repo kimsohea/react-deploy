@@ -90,7 +90,7 @@ export const AladinProdBtnList = ({ items }: itemBtnProps) => {
     <>
       {items && <SwiperPage className={pageClass} />}
       {items.length > 0 && (
-        <Swiper {...swiperOption} className="swiper_btnlist">
+        <Swiper {...swiperOption} className="swiper_prodlist btn">
           {items.map(({ item }) => (
             <SwiperSlide key={item[0].isbn}>
               {item.map((prod) => (
