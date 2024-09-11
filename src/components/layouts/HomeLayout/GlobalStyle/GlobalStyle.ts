@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-size: 62.5%;
-    color: #202020;
+    color: #000;
     font-family: var(--base-fonts);
   }
 
@@ -96,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: inherit;
+    color: #000;
     text-decoration: none;
   }
 
@@ -125,95 +125,103 @@ export default GlobalStyle;
 
 export const Section = styled.section`
   position: relative;
-  max-width: 110rem;
+  width: 100%;
   margin: 0 auto;
-  padding-top: 14rem;
+  padding-bottom: 50px;
 
-  &.wide {
-    width: 100%;
-    max-width: 100%;
-
-    .cts_blk {
-      width: 110rem;
-      margin: 0 auto;
-    }
+  .title {
+    display: block;
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 2rem;
   }
 
-  .cts_tit {
-    h2 {
-      display: inline-block;
-      position: relative;
-      color: var(--base-color);
-      font-size: 6rem;
-      font-weight: 700;
-      text-indent: -0.2rem;
-      line-height: 6rem;
+  .swiper_prodlist {
+    width: 1000px;
+    margin: 25px auto 0;
+    letter-spacing: -0.25px;
 
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: -2rem;
-        bottom: 0.5rem;
-        width: 1.4rem;
-        height: 1.4rem;
-        background-color: var(--point-color);
-        border-radius: 50%;
-      }
-    }
-
-    img,
     p {
-      transition: all 0.75s ease;
+      display: -webkit-box;
+      overflow: hidden;
+      font-family: "Noto Sans" sans-serif;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      word-break: keep-all;
     }
 
-    &.motion-effect {
-      img,
-      p {
-        opacity: 0;
-        transform: translateY(-2rem);
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 300px;
+      margin: 0;
+      overflow: hidden;
+      background-color: #fff;
+      border: 1px solid #f3f4f7;
+      box-sizing: border-box;
+
+      img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+      }
+
+      &.img_sq {
+        height: 250px;
       }
     }
-  }
 
-  .cts_list {
-    display: flex;
-  }
+    .name {
+      height: 48px;
+      margin-top: 5px;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
 
-  @media screen and (max-width: 1080px) {
-    max-width: initial;
-    padding-left: 3%;
-    padding-right: 3%;
-
-    &.wide {
-      width: initial;
-      padding-left: 0;
-      padding-right: 0;
-
-      .cts_blk {
-        width: initial;
-      }
+    .desc {
+      height: 43px;
+      margin-top: 10px;
+      font-size: 1.4rem;
+      font-weight: 300;
     }
   }
 
   @media screen and (max-width: 640px) {
-    padding: 6rem 1.5rem 0;
+    padding-bottom: 3rem;
+    box-sizing: border-box;
 
-    .cts_tit {
-      h2 {
-        font-size: 3rem;
-        line-height: 3rem;
+    .title {
+      width: 100%;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+      font-size: 1.6rem;
+      text-align: center;
+    }
 
-        &:after {
-          width: 0.7rem;
-          height: 0.7rem;
+    .swiper_prodlist {
+      width: calc(100% - 3rem);
+      margin: 1rem 1.5rem 0;
+
+      figure {
+        height: 20rem;
+
+        &.img_sq {
+          height: 15rem;
         }
       }
 
-      p {
-        font-size: 1.3rem;
-        line-height: 2rem;
-        margin-top: 1.7rem;
+      .desc {
+        height: 3.5rem;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .name {
+        height: 4rem;
+        margin-top: 0.5rem;
+        font-size: 1.4rem;
       }
     }
   }

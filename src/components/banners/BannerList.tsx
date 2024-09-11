@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 
 import { SwiperBtn, SwiperImg } from "./BannerList.styled";
 

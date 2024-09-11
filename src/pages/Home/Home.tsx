@@ -1,45 +1,65 @@
 import { useState, useEffect } from "react";
-import { fetchGitHubImages, fetchAladinProductList } from "@/utils/fetchUtils";
+import { fetchAladinItem, fetchAladinList } from "@/utils/fetchUtils";
 
-import { ImgType, ImgNameListType } from "@/types/images";
-
-import { CommonProdList } from "@/components/products/ProductLists";
+import { Section } from "@/components/layouts";
 import { MainBanners, SubBanners } from "@/components/banners/BannerList";
+import { AladinProdList } from "@/components/products/AladinProdList";
+
+import { aladinItemType, alainListType } from "@/types/aladinItems";
 
 const MainBanner = () => <MainBanners folder={"main"} />;
 
 const SubBanner = () => <SubBanners folder={"main"} />;
 
-type imgProps = { images: ImgNameListType };
-
-const CommonTopList = ({ images }: imgProps) => {
-  return <CommonProdList folder={"main"} position={"Top"} images={images} />;
-};
-
-const CommonBtmList = ({ images }: imgProps) => {
-  return <CommonProdList folder={"main"} position={"Btm"} images={images} />;
-};
-
 const Home = () => {
-  const [images, setImages] = useState<ImgNameListType>([]);
+  const [bestMonthList, setBestMonthList] = useState<alainListType>();
+  const [bestBlogList, setBestBlogList] = useState<alainListType>();
+  const [goodsItems, setGoodItems] = useState<aladinItemType>();
+  const [specialItems, setSpecialItems] = useState<aladinItemType>();
 
   useEffect(() => {
-    fetchGitHubImages("main").then((res) => {
-      const tmpArr: ImgNameListType = res.map((item: ImgType) => ({
-        name: item.name,
-        imgUrl: item.download_url || "",
-      }));
-      setImages(tmpArr);
+    fetchAladinList("main", "best_month_list.json").then((res) => {
+      if (res) setBestMonthList(res);
     });
-    fetchAladinProductList();
+    fetchAladinList("main", "best_blog_list.json").then((res) => {
+      if (res) setBestBlogList(res);
+    });
+    fetchAladinItem("main", "goods_items.json").then((res) => {
+      if (res) setGoodItems(res);
+    });
+    fetchAladinItem("main", "special_items.json").then((res) => {
+      if (res) setSpecialItems(res);
+    });
   }, []);
 
   return (
     <>
       <MainBanner />
-      <CommonTopList images={images} />
+      {bestMonthList !== undefined && (
+        <Section>
+          <strong className="title">이달의 주목도서</strong>
+          <AladinProdList items={bestMonthList.item} />
+        </Section>
+      )}
+      {bestBlogList !== undefined && (
+        <Section>
+          <strong className="title">화제의 책 소식</strong>
+          <AladinProdList items={bestBlogList.item} />
+        </Section>
+      )}
+      {goodsItems !== undefined && (
+        <Section>
+          <strong className="title">알라딘의 굿즈 모음</strong>
+          <AladinProdList items={goodsItems} type={"img_sq"} />
+        </Section>
+      )}
+      {specialItems !== undefined && (
+        <Section>
+          <strong className="title">이 주의 특가</strong>
+          <AladinProdList items={specialItems} />
+        </Section>
+      )}
       <SubBanner />
-      <CommonBtmList images={images} />
     </>
   );
 };

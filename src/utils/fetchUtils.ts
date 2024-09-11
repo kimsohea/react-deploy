@@ -1,9 +1,10 @@
 import axios from "axios";
+
 import { ImgListType } from "@/types/images";
 import { CommonProdListType } from "@/types/products";
+import { aladinItemType, alainListType } from "@/types/aladinItems";
 
 const githubKey = "tocken " + import.meta.env.VITE_GITGUB_TOCKEN;
-const aladinKey = import.meta.env.VITE_ALADIN_TTBKEY;
 
 export const fetchGitHubFile = async (file: string) => {
   const response = await axios.get(
@@ -32,18 +33,28 @@ export const fetchGitHubImages = async (folder: string) => {
 };
 
 export const fetchGitHubCommonJson = async (folder: string, file: string) => {
-  const response = await axios.get(
+  const res = await axios.get(
     `https://raw.githubusercontent.com/kimsohea/aladin-images/main/${folder}/${folder}${file}CommonProducts.json`
   );
 
-  const products: CommonProdListType = response.data;
-  return response.status === 200 ? products : null;
+  const products: CommonProdListType = res.data;
+  return res.status === 200 ? products : null;
 };
 
-export const fetchAladinProductList = async () => {
-  const response = await axios.get(
-    `aladin/ItemList.aspx?ttbkey=${aladinKey}&QueryType=ItemNewAll&SearchTarget=Book&output=js&Version=20131101`
+export const fetchAladinList = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
   );
-  console.log(response);
-  return response.status === 200 ? response.data : null;
+
+  const products: alainListType = res.data;
+  return res.status === 200 ? products : undefined;
+};
+
+export const fetchAladinItem = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
+  );
+
+  const products: aladinItemType = res.data;
+  return res.status === 200 ? products : undefined;
 };
