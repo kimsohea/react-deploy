@@ -13,7 +13,11 @@ type footerType = {
   lists: footerItem[];
 };
 
-const Footer = () => {
+type propsType = {
+  className: string;
+};
+
+const Footer = ({ className }: propsType) => {
   const [tmpFooter, setTmpFooter] = useState<footerType[]>([]);
 
   useEffect(() => {
@@ -23,7 +27,7 @@ const Footer = () => {
   return (
     <>
       {tmpFooter.length > 0 && (
-        <FooterWrap>
+        <FooterWrap className={className}>
           <nav className="footer_wrap">
             {tmpFooter
               .filter(({ type }) => type !== "bottom")
