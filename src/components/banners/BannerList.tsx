@@ -4,8 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { SwiperBtn, SwiperImg } from "./BannerList.styled";
 
-import { fetchGitHubImages } from "@/utils/fetchUtils";
-import { ImgListType } from "@/types/images";
+import { fetchBanner } from "@/utils/fetchUtils";
 
 type BannerProps = {
   folder: string;
@@ -27,9 +26,8 @@ export const MainBanners = ({ folder }: BannerProps) => {
   };
 
   useEffect(() => {
-    fetchGitHubImages(`banners/${folder}`).then((res: ImgListType) => {
-      const tmpArr: string[] = res.map((item) => item.download_url);
-      setBanner(tmpArr);
+    fetchBanner(folder, "main_banner.json").then((res) => {
+      if (res !== undefined) setBanner(res.item);
     });
   }, []);
 
@@ -70,9 +68,8 @@ export const SubBanners = ({ folder }: BannerProps) => {
   };
 
   useEffect(() => {
-    fetchGitHubImages(`sub_banner/${folder}`).then((res: ImgListType) => {
-      const tmpArr: string[] = res.map((item) => item.download_url);
-      setBanner(tmpArr);
+    fetchBanner(folder, "sub_banner.json").then((res) => {
+      if (res !== undefined) setBanner(res.item);
     });
   }, []);
 

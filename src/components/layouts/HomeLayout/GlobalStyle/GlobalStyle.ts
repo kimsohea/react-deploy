@@ -188,6 +188,12 @@ export const Section = styled.section`
     }
   }
 
+  .swiper_btnlist {
+    .swiper-slide {
+      display: flex;
+    }
+  }
+
   @media screen and (max-width: 640px) {
     padding-bottom: 3rem;
     box-sizing: border-box;

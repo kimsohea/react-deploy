@@ -1,9 +1,9 @@
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { aladinItemType } from "@/types/aladinItems";
+import { aladinItemType, aladinBtnType } from "@/types/aladinItems";
 
-import { SwiperBtn } from "./ProductList.styled";
+import { SwiperBtn, SwiperPage } from "./ProductList.styled";
 
 type itemProps = {
   items: aladinItemType;
@@ -59,6 +59,54 @@ export const AladinProdList = ({ items, type }: itemProps) => {
             <button className="next"></button>
           </SwiperBtn>
         </>
+      )}
+    </>
+  );
+};
+
+type itemBtnProps = {
+  items: aladinBtnType;
+};
+
+export const AladinProdBtnList = ({ items }: itemBtnProps) => {
+  const pageClass = `page_${items[0].item[0].isbn}`;
+
+  const swiperOption = {
+    modules: [Pagination, Autoplay],
+    autoplay: {
+      delay: 8000,
+    },
+    pagination: {
+      el: "." + pageClass,
+      clickable: true,
+      renderBullet: (index: number, className: string) => {
+        return `<li class="${className}"><button>${items[index].title}</button></li>`;
+      },
+    },
+    loop: true,
+  };
+
+  return (
+    <>
+      {items && <SwiperPage className={pageClass} />}
+      {items.length > 0 && (
+        <Swiper {...swiperOption} className="swiper_btnlist">
+          {items.map(({ item }) => (
+            <SwiperSlide key={item[0].isbn}>
+              {item.map((prod) => (
+                <a href={prod.link} target="_blank" key={prod.isbn}>
+                  <figure>
+                    <img src={prod.cover} alt="prod.title" />
+                  </figure>
+                  {prod.description && (
+                    <p className="desc">{prod.description}</p>
+                  )}
+                  <p className="name">{prod.title}</p>
+                </a>
+              ))}
+            </SwiperSlide>
+          ))}
+        </Swiper>
       )}
     </>
   );

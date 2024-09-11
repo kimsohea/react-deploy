@@ -1,23 +1,39 @@
 import { useState, useEffect } from "react";
-import { fetchAladinItem, fetchAladinList } from "@/utils/fetchUtils";
+
+import {
+  fetchAladinItem,
+  fetchAladinList,
+  fetchAladinBtnList,
+} from "@/utils/fetchUtils";
 
 import { Section } from "@/components/layouts";
+import {
+  AladinProdList,
+  AladinProdBtnList,
+} from "@/components/products/AladinProdList";
 import { MainBanners, SubBanners } from "@/components/banners/BannerList";
-import { AladinProdList } from "@/components/products/AladinProdList";
 
-import { aladinItemType, alainListType } from "@/types/aladinItems";
+import {
+  aladinItemType,
+  alainListType,
+  aladinBtnType,
+} from "@/types/aladinItems";
 
 const MainBanner = () => <MainBanners folder={"main"} />;
 
 const SubBanner = () => <SubBanners folder={"main"} />;
 
 const Home = () => {
+  const [btnList, setBtnList] = useState<aladinBtnType>();
   const [bestMonthList, setBestMonthList] = useState<alainListType>();
   const [bestBlogList, setBestBlogList] = useState<alainListType>();
   const [goodsItems, setGoodItems] = useState<aladinItemType>();
   const [specialItems, setSpecialItems] = useState<aladinItemType>();
 
   useEffect(() => {
+    fetchAladinBtnList("main", "top_list.json").then((res) => {
+      if (res) setBtnList(res);
+    });
     fetchAladinList("main", "best_month_list.json").then((res) => {
       if (res) setBestMonthList(res);
     });
@@ -35,6 +51,12 @@ const Home = () => {
   return (
     <>
       <MainBanner />
+
+      {btnList !== undefined && (
+        <Section>
+          <AladinProdBtnList items={btnList} />
+        </Section>
+      )}
       {bestMonthList !== undefined && (
         <Section>
           <strong className="title">이달의 주목도서</strong>

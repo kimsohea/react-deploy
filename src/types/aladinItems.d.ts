@@ -1,3 +1,19 @@
+interface paperType {
+  itemId: number;
+  isbn: string;
+  isbn13: string;
+  priceSales: number;
+  link: string;
+}
+
+interface eBookType {
+  itemId: number;
+  ISBN: string;
+  isbn13: string;
+  priceSales: number;
+  link: string;
+}
+
 interface seriesType {
   seriesId: number;
   seriesLink: string;
@@ -12,9 +28,11 @@ interface reviewType {
 }
 
 interface subInfoType {
-  subTitle: string;
-  originalTitle: string;
-  itemPage: number;
+  subTitle?: string;
+  originalTitle?: string;
+  itemPage?: number;
+  paperBookList?: paperType[];
+  ebookList?: eBookType;
 }
 
 interface itemType {
@@ -39,6 +57,7 @@ interface itemType {
   adult: boolean;
   fixedPrice: boolean;
   customerReviewRank: number;
+  bestDuration?: string;
   bestRank?: number;
   seriesInfo?: seriesType;
   subInfo: subInfoType;
@@ -60,6 +79,13 @@ interface listType {
   item: itemType[];
 }
 
+interface btnType {
+  title: string;
+  item: itemType[];
+}
+
 export type alainListType = listType;
 
 export type aladinItemType = itemType[];
+
+export type aladinBtnType = btnType[];

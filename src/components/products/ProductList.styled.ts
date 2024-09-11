@@ -114,3 +114,58 @@ export const SwiperBtn = styled.div<{ className: string }>`
     }
   }
 `;
+
+export const SwiperPage = styled.ul<{ className: string }>`
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+
+  li {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: initial;
+    height: 30px;
+    box-sizing: border-box;
+    font-weight: 300;
+    background-color: transparent;
+
+    &:before {
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      display: none;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      content: "";
+    }
+
+    &.swiper-pagination-bullet-active {
+      font-weight: 700;
+
+      &:before {
+        display: block;
+      }
+    }
+  }
+
+  button {
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: inherit;
+    color: #000;
+  }
+
+  &.swiper-pagination-horizontal {
+    &.swiper-pagination-bullets {
+      li {
+        &.swiper-pagination-bullet {
+          margin: 0 15px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+`;
