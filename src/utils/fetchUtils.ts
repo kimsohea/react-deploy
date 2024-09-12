@@ -1,6 +1,11 @@
 import axios from "axios";
-import { ImgListType } from "@/types/images";
-import { CommonProdListType } from "@/types/products";
+
+import { bannerType } from "@/types/banners";
+import {
+  aladinItemType,
+  alainListType,
+  aladinBtnType,
+} from "@/types/aladinItems";
 
 export const fetchGitHubFile = async (file: string) => {
   const response = await axios.get(
@@ -9,25 +14,38 @@ export const fetchGitHubFile = async (file: string) => {
   return response.status === 200 ? response.data : null;
 };
 
-export const fetchGitHubImages = async (folder: string) => {
-  const response = await axios.get(
-    `https://api.github.com/repos/kimsohea/aladin-images/contents/${folder}`
+export const fetchAladinList = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
   );
 
-  // TypeScript에 데이터 타입을 명시
-  const files: ImgListType = response.data;
-
-  if (response.status === 200) {
-    // 이미지 파일만 필터링
-    return files.filter(({ name }) => /\.(webp)$/.test(name));
-  } else throw new Error("Failed to fetch content");
+  const products: alainListType = res.data;
+  return res.status === 200 ? products : undefined;
 };
 
-export const fetchGitHubCommonJson = async (folder: string, file: string) => {
-  const response = await axios.get(
-    `https://raw.githubusercontent.com/kimsohea/aladin-images/main/${folder}/${folder}${file}CommonProducts.json`
+export const fetchAladinBtnList = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
   );
 
-  const products: CommonProdListType = response.data;
-  return response.status === 200 ? products : null;
+  const lists: aladinBtnType = res.data;
+  return res.status === 200 ? lists : undefined;
+};
+
+export const fetchAladinItem = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
+  );
+
+  const products: aladinItemType = res.data;
+  return res.status === 200 ? products : undefined;
+};
+
+export const fetchBanner = async (folder: string, file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/${folder}/${file}`
+  );
+
+  const banners: bannerType = res.data;
+  return res.status === 200 ? banners : undefined;
 };

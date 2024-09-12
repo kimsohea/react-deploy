@@ -45,7 +45,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist'
+          path: "./dist"
+        env:
+          VITE_GITGUB_TOCKEN: ${{ secrets.VITE_GITGUB_TOCKEN }}
+          VITE_ALADIN_TTBKEY: ${{ secrets.VITE_ALADIN_TTBKEY }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
