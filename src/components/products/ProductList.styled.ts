@@ -169,4 +169,33 @@ export const SwiperPage = styled.ul<{ className: string }>`
       }
     }
   }
+
+  @media screen and (max-width: 640px) {
+    flex-wrap: wrap;
+
+    li {
+      width: 22%;
+
+      &:before {
+        left: 50%;
+        bottom: -0.5rem;
+        width: 85%;
+        transform: translateX(-50%);
+      }
+    }
+
+    button {
+      font-size: 1.2rem;
+    }
+
+    &.swiper-pagination-horizontal {
+      &.swiper-pagination-bullets {
+        li {
+          &.swiper-pagination-bullet {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
 `;

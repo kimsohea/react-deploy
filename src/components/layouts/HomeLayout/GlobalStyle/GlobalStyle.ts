@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+import AudioImg from "@/assets/audio.png";
+
 const GlobalStyle = createGlobalStyle`
   :root {
     --base-color: #0b0b0b;
@@ -130,10 +132,39 @@ export const Section = styled.section`
   padding-bottom: 50px;
 
   .title {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 1000px;
+    height: 30px;
     margin: 0 auto;
     font-size: 2rem;
+
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #93999b;
+      margin-left: 20px;
+      transform: rotate(45deg);
+
+      &:before {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: 1px solid #93999b;
+        border-left-width: 0;
+        border-bottom-width: 0;
+        transform: translate(-10%, 10%);
+        content: "";
+      }
+    }
+
+    &.pt-30 {
+      padding-top: 30px;
+    }
   }
 
   .swiper_prodlist {
@@ -171,6 +202,32 @@ export const Section = styled.section`
       &.img_sq {
         height: 250px;
       }
+
+      &.img_audio {
+        position: relative;
+
+        &::before,
+        &:after {
+          position: absolute;
+          right: 0.5rem;
+          bottom: 0.5rem;
+          display: block;
+          width: 50px;
+          height: 50px;
+          content: "";
+        }
+        &:before {
+          border-radius: 50%;
+          background-color: #ff2683;
+        }
+
+        &:after {
+          background-image: url(${AudioImg});
+          background-size: 60%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
     }
 
     .name {
@@ -187,16 +244,22 @@ export const Section = styled.section`
       font-weight: 300;
     }
 
+    .serise {
+      height: 43px;
+      margin-top: 5px;
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
 
     &.btn {
       .swiper-slide {
         display: flex;
-       column-gap: 15px;
+        column-gap: 15px;
 
-       a {
-        display: block;
-        width: 25%;
-       }
+        a {
+          display: block;
+          width: 25%;
+        }
       }
     }
   }
@@ -206,11 +269,20 @@ export const Section = styled.section`
     box-sizing: border-box;
 
     .title {
+      justify-content: center;
       width: 100%;
       padding: 0 1.5rem;
       box-sizing: border-box;
       font-size: 1.6rem;
       text-align: center;
+
+      .link {
+        display: none;
+      }
+
+      &.pt-30 {
+        padding-top: 3rem;
+      }
     }
 
     .swiper_prodlist {
@@ -223,6 +295,16 @@ export const Section = styled.section`
         &.img_sq {
           height: 15rem;
         }
+
+        &.img_audio {
+          position: relative;
+
+          &::before,
+          &:after {
+            width: 4rem;
+            height: 4rem;
+          }
+        }
       }
 
       .desc {
@@ -232,9 +314,37 @@ export const Section = styled.section`
       }
 
       .name {
-        height: 4rem;
+        height: 3.9rem;
         margin-top: 0.5rem;
         font-size: 1.4rem;
+      }
+
+      &.btn {
+        .swiper-slide {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 1rem;
+
+          a {
+            display: block;
+            width: calc(50% - 0.5rem);
+
+            &:nth-child(1),
+            &:nth-child(2) {
+              margin-bottom: 1.5rem;
+            }
+          }
+
+          .desc {
+            display: none;
+          }
+
+          .serise {
+            height: 2rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+          }
+        }
       }
     }
   }

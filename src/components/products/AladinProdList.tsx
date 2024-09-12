@@ -8,11 +8,17 @@ import { SwiperBtn, SwiperPage } from "./ProductList.styled";
 type itemProps = {
   items: aladinItemType;
   type?: string;
+  isSale?: boolean;
 };
 
-export const AladinProdList = ({ items, type }: itemProps) => {
+export const AladinProdList = ({ items, type, isSale }: itemProps) => {
   const navClass = `nav_${items[0].itemId}`;
   const imgType = type || "";
+
+  const handlePrice = (origin: number, sale: number) => {
+    const tmpNum: number = origin / (origin - sale);
+    return Math.ceil(tmpNum);
+  };
 
   const swiperOption = {
     modules: [Navigation],
@@ -40,8 +46,8 @@ export const AladinProdList = ({ items, type }: itemProps) => {
       {items.length > 0 && (
         <>
           <Swiper {...swiperOption} className="swiper_prodlist">
-            {items.map((prod) => (
-              <SwiperSlide key={prod.isbn}>
+            {items.map((prod, idx) => (
+              <SwiperSlide key={`prod_${idx}_${prod.isbn}`}>
                 <a href={prod.link} target="_blank">
                   <figure className={imgType}>
                     <img src={prod.cover} alt="prod.title" />
@@ -50,6 +56,8 @@ export const AladinProdList = ({ items, type }: itemProps) => {
                     <p className="desc">{prod.description}</p>
                   )}
                   <p className="name">{prod.title}</p>
+                  {isSale &&
+                    `${handlePrice(prod.priceStandard, prod.priceSales)}%`}
                 </a>
               </SwiperSlide>
             ))}
@@ -95,13 +103,18 @@ export const AladinProdBtnList = ({ items }: itemBtnProps) => {
             <SwiperSlide key={item[0].isbn}>
               {item.map((prod) => (
                 <a href={prod.link} target="_blank" key={prod.isbn}>
-                  <figure>
+                  <figure className={prod.mallType === "GIFT" ? "img_sq" : ""}>
                     <img src={prod.cover} alt="prod.title" />
                   </figure>
                   {prod.description && (
                     <p className="desc">{prod.description}</p>
                   )}
                   <p className="name">{prod.title}</p>
+                  {!prod.description &&
+                    prod.seriesInfo &&
+                    prod.mallType === "GIFT" && (
+                      <p className="serise">{prod.seriesInfo.seriesName}</p>
+                    )}
                 </a>
               ))}
             </SwiperSlide>
