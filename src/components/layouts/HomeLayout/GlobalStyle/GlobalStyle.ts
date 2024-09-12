@@ -165,6 +165,10 @@ export const Section = styled.section`
     &.pt-30 {
       padding-top: 30px;
     }
+
+    &.center {
+      justify-content: center;
+    }
   }
 
   .swiper_prodlist {
@@ -230,6 +234,13 @@ export const Section = styled.section`
       }
     }
 
+    .cate {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
     .name {
       height: 48px;
       margin-top: 5px;
@@ -259,6 +270,15 @@ export const Section = styled.section`
         a {
           display: block;
           width: 25%;
+
+          &.book {
+            text-align: center;
+
+            .desc {
+              height: 20px;
+              -webkit-line-clamp: 1;
+            }
+          }
         }
       }
     }
@@ -345,6 +365,35 @@ export const Section = styled.section`
             font-size: 1.2rem;
           }
         }
+      }
+    }
+  }
+`;
+
+export const CategoryList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 15px;
+  width: 100%;
+  max-width: 1440px;
+
+  li {
+    width: fit-content;
+    height: 30px;
+    a {
+      padding: 8px 20px;
+      border-radius: 10px;
+      background-color: #f7f8fb;
+      font-size: 1.4rem;
+      color: #000;
+      transition: background-color 0.2s linear;
+    }
+
+    &:hover {
+      a {
+        background-color: #93999b;
       }
     }
   }

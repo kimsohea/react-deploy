@@ -1,20 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-interface Category {
-  label: string;
-  categoryName?: string;
-  children: Category[];
-}
-
-type CategoryContextData = {
-  state: {
-    category: Category[],
-  },
-  actions: {
-    setCategory:(categories: Category[]) => void,
-  }
-};
+import { Category, CategoryContextData } from "@/types/category";
 
 // Context 생성
 const CategoryContext = createContext<CategoryContextData>({
@@ -42,10 +29,12 @@ const CategoryProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <CategoryContext.Provider value={{
-      state: { category },
-      actions: { setCategory },
-    }}>
+    <CategoryContext.Provider
+      value={{
+        state: { category },
+        actions: { setCategory },
+      }}
+    >
       {children}
     </CategoryContext.Provider>
   );

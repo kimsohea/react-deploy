@@ -65,6 +65,10 @@ export const SwiperBtn = styled.div<{ className: string }>`
     &.next {
       transform: translateX(-5px) rotate(135deg);
     }
+
+    &.swiper-button-lock {
+      display: none;
+    }
   }
 
   @media screen and (max-width: 640px) {
@@ -168,6 +172,10 @@ export const SwiperPage = styled.ul<{ className: string }>`
         }
       }
     }
+  }
+
+  &.book {
+    margin-top: 15px;
   }
 
   @media screen and (max-width: 640px) {

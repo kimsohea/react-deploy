@@ -1,13 +1,12 @@
 import { lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 
 // layouts
 import { RouteLayout } from "@/components/layouts/RouteLayout";
 
 // pages: apps
 const Home = lazy(() => import("@/pages/Home"));
-const BookCategory = lazy(() => import("@/pages/Categories"));
-const ProductInfo = lazy(() => import("@/pages/ProductInfo"));
+const BookCategoryMain = lazy(() => import("@/pages/Category/Book"));
 
 const Router = () =>
   useRoutes([
@@ -20,22 +19,17 @@ const Router = () =>
           element: <Home />,
         },
         {
-          path: "books",
+          path: "category",
           children: [
             {
-              index: true,
-              path: "local-books", // `/books/local-books`에 접속할 때 BookCategory 렌더링
-              element: <BookCategory />,
+              path: "books",
+              element: <Navigate to="/local-books" replace />,
             },
-            // {
-            //   path: 'foreign-books',  // 추가적인 하위 경로
-            //   element: <LocalBooks />,
-            // }
+            {
+              path: "local-books",
+              element: <BookCategoryMain />,
+            },
           ],
-        },
-        {
-          path: "products",
-          element: <ProductInfo />,
         },
       ],
     },

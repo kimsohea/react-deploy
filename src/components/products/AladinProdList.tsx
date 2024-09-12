@@ -74,9 +74,10 @@ export const AladinProdList = ({ items, type, isSale }: itemProps) => {
 
 type itemBtnProps = {
   items: aladinBtnType;
+  type?: string;
 };
 
-export const AladinProdBtnList = ({ items }: itemBtnProps) => {
+export const AladinProdBtnList = ({ items, type }: itemBtnProps) => {
   const pageClass = `page_${items[0].item[0].isbn}`;
 
   const swiperOption = {
@@ -96,17 +97,26 @@ export const AladinProdBtnList = ({ items }: itemBtnProps) => {
 
   return (
     <>
-      {items && <SwiperPage className={pageClass} />}
+      {items && <SwiperPage className={pageClass + " " + type} />}
       {items.length > 0 && (
         <Swiper {...swiperOption} className="swiper_prodlist btn">
           {items.map(({ item }) => (
             <SwiperSlide key={item[0].isbn}>
               {item.map((prod) => (
-                <a href={prod.link} target="_blank" key={prod.isbn}>
+                <a
+                  href={prod.link}
+                  target="_blank"
+                  key={prod.isbn}
+                  className={type}
+                >
+                  {type === "book" && (
+                    <p className="cate">{prod.categoryName.split(">")[1]}</p>
+                  )}
                   <figure className={prod.mallType === "GIFT" ? "img_sq" : ""}>
                     <img src={prod.cover} alt="prod.title" />
                   </figure>
-                  {prod.description && (
+                  {type === "book" && <p className="desc">{prod.author}</p>}
+                  {prod.description && type !== "book" && (
                     <p className="desc">{prod.description}</p>
                   )}
                   <p className="name">{prod.title}</p>
