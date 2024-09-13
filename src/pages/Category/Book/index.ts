@@ -1,3 +1,3 @@
-import BookCategoryMain from "./BookCategoryMain";
+import BookCategory from "./BookCategory";
 
-export default BookCategoryMain;
+export default BookCategory;

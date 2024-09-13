@@ -246,6 +246,7 @@ export const Section = styled.section`
       margin-top: 5px;
       font-size: 1.6rem;
       font-weight: 500;
+      line-height: 2.3rem;
     }
 
     .desc {

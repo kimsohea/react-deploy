@@ -6,7 +6,8 @@ import { RouteLayout } from "@/components/layouts/RouteLayout";
 
 // pages: apps
 const Home = lazy(() => import("@/pages/Home"));
-const BookCategoryMain = lazy(() => import("@/pages/Category/Book"));
+const BookCategory = lazy(() => import("@/pages/Category/Book"));
+const ForeignCategory = lazy(() => import("@/pages/Category/Foreign"));
 
 const Router = () =>
   useRoutes([
@@ -27,7 +28,11 @@ const Router = () =>
             },
             {
               path: "local-books",
-              element: <BookCategoryMain />,
+              element: <BookCategory />,
+            },
+            {
+              path: "foreign-books",
+              element: <ForeignCategory />,
             },
           ],
         },

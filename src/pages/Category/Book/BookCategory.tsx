@@ -62,7 +62,7 @@ const EventBanner = () => {
   );
 };
 
-const BookCategoryMain = () => {
+const BookCategory = () => {
   // context
   const { state } = useContext(CategoryContext);
   const { category } = state;
@@ -201,4 +201,4 @@ const BookCategoryMain = () => {
     </>
   );
 };
-export default BookCategoryMain;
+export default BookCategory;
