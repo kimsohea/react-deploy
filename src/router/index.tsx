@@ -9,6 +9,7 @@ const Home = lazy(() => import("@/pages/Home"));
 const BookCategory = lazy(() => import("@/pages/Category/Book"));
 const ForeignCategory = lazy(() => import("@/pages/Category/Foreign"));
 const EbookCategory = lazy(() => import("@/pages/Category/Ebook"));
+const GoodsCategory = lazy(() => import("@/pages/Category/Goods"));
 
 const Router = () =>
   useRoutes([
@@ -38,6 +39,10 @@ const Router = () =>
             {
               path: "ebooks",
               element: <EbookCategory />,
+            },
+            {
+              path: "goods",
+              element: <GoodsCategory />,
             },
           ],
         },

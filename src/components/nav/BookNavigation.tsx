@@ -7,13 +7,13 @@ export const BookNav = () => {
     <BookNavi>
       <ul>
         <li>
-          <Link to="category/local-books">국내도서</Link>
+          <Link to="/category/local-books">국내도서</Link>
         </li>
         <li>
-          <Link to="category/foreign-books">외국도서</Link>
+          <Link to="/category/foreign-books">외국도서</Link>
         </li>
         <li>
-          <Link to="category/e-book">eBook</Link>
+          <Link to="/category/ebooks">eBook</Link>
         </li>
       </ul>
     </BookNavi>

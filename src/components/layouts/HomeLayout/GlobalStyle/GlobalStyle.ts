@@ -267,6 +267,7 @@ export const Section = styled.section`
       .swiper-slide {
         display: flex;
         column-gap: 15px;
+        justify-content: center;
 
         a {
           display: block;
