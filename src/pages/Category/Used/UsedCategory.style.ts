@@ -46,13 +46,34 @@ export const SearchBox = styled.section`
     }
 
     .search_btn {
+      position: relative;
       width: 40px;
       background: #dedfe4;
       cursor: pointer;
 
       &::before,
       &:after {
+        position: absolute;
+        transform: translate(-50%, -50%);
         content: "";
+      }
+
+      &:before {
+        top: 45%;
+        left: 45%;
+        width: 30%;
+        height: 30%;
+        border: 2px solid #000;
+        border-radius: 50%;
+      }
+
+      &:after {
+        top: 65%;
+        left: 65%;
+        width: 25%;
+        height: 2px;
+        background-color: #000;
+        transform: translate(-50%, -50%) rotate(45deg);
       }
     }
 
@@ -66,7 +87,9 @@ export const SearchBox = styled.section`
 
     #searchKeyword {
       width: 400px;
+      padding: 0 10px;
       border: 0.25px solid #dedfe4;
+      font-size: 1.4rem;
     }
   }
 `;
