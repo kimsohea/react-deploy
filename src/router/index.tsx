@@ -26,7 +26,7 @@ const Router = () =>
           children: [
             {
               path: "books",
-              element: <Navigate to="/local-books" replace />,
+              element: <Navigate to="/category/local-books" replace />,
             },
             {
               path: "local-books",

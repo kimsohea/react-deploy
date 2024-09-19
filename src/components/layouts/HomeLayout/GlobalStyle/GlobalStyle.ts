@@ -293,6 +293,7 @@ export const Section = styled.section`
     .title {
       justify-content: center;
       width: 100%;
+      height: 3rem;
       padding: 0 1.5rem;
       box-sizing: border-box;
       font-size: 1.6rem;
@@ -303,7 +304,8 @@ export const Section = styled.section`
       }
 
       &.pt-30 {
-        padding-top: 3rem;
+        padding-top: 0;
+        margin-top: 3rem;
       }
     }
 
@@ -339,6 +341,7 @@ export const Section = styled.section`
         height: 3.9rem;
         margin-top: 0.5rem;
         font-size: 1.4rem;
+        line-height: 2.2rem;
       }
 
       &.btn {
