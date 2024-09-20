@@ -11,6 +11,8 @@ const ForeignCategory = lazy(() => import("@/pages/Category/Foreign"));
 const EbookCategory = lazy(() => import("@/pages/Category/Ebook"));
 const GoodsCategory = lazy(() => import("@/pages/Category/Goods"));
 const UsedCategory = lazy(() => import("@/pages/Category/Used"));
+const CdCategory = lazy(() => import("@/pages/Category/Cd"));
+const BluelayCategory = lazy(() => import("@/pages/Category/Bluelay"));
 
 const Router = () =>
   useRoutes([
@@ -48,6 +50,18 @@ const Router = () =>
             {
               path: "used-shop",
               element: <UsedCategory />,
+            },
+            {
+              path: "cd-bluelay",
+              element: <Navigate to="/category/cd" replace />,
+            },
+            {
+              path: "cd",
+              element: <CdCategory />,
+            },
+            {
+              path: "bluelay",
+              element: <BluelayCategory />,
             },
           ],
         },

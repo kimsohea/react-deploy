@@ -375,7 +375,7 @@ export const Section = styled.section`
   }
 `;
 
-export const CategoryList = styled.ul`
+export const CategoryList = styled.ul<{ className?: string }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -402,5 +402,17 @@ export const CategoryList = styled.ul`
         background-color: #93999b;
       }
     }
+  }
+
+  &.mt-30 {
+    margin-top: 30px;
+  }
+
+  &.mt-50 {
+    margin-top: 50px;
+  }
+
+  &.mt-60 {
+    margin-top: 60px;
   }
 `;

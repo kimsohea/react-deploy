@@ -19,3 +19,18 @@ export const BookNav = () => {
     </BookNavi>
   );
 };
+
+export const MusicNav = () => {
+  return (
+    <BookNavi>
+      <ul>
+        <li>
+          <Link to="/category/cd">음반</Link>
+        </li>
+        <li>
+          <Link to="/category/bluelay">블루레이</Link>
+        </li>
+      </ul>
+    </BookNavi>
+  );
+};
