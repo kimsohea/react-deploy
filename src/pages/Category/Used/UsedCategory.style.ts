@@ -5,7 +5,7 @@ export const SearchBox = styled.section`
   flex-direction: column;
   align-items: center;
   width: 1000px;
-  margin: 20px auto 0px;
+  margin: 40px auto 0px;
   background: #f7f8fb;
   padding: 30px 40px 40px 40px;
 
@@ -92,4 +92,15 @@ export const SearchBox = styled.section`
       font-size: 1.4rem;
     }
   }
+`;
+
+export const UsedTitle = styled.strong`
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
 `;

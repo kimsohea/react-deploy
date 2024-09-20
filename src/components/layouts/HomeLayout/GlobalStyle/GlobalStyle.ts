@@ -383,6 +383,7 @@ export const CategoryList = styled.ul`
   row-gap: 15px;
   width: 100%;
   max-width: 1440px;
+  margin: 0 auto;
 
   li {
     width: fit-content;
