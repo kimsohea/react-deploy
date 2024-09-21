@@ -13,6 +13,7 @@ const GoodsCategory = lazy(() => import("@/pages/Category/Goods"));
 const UsedCategory = lazy(() => import("@/pages/Category/Used"));
 const CdCategory = lazy(() => import("@/pages/Category/Cd"));
 const BluelayCategory = lazy(() => import("@/pages/Category/Bluelay"));
+const LibraryCategory = lazy(() => import("@/pages/Category/Library"));
 
 const Router = () =>
   useRoutes([
@@ -62,6 +63,10 @@ const Router = () =>
             {
               path: "bluelay",
               element: <BluelayCategory />,
+            },
+            {
+              path: "library",
+              element: <LibraryCategory />,
             },
           ],
         },
