@@ -165,6 +165,10 @@ export const Section = styled.section`
     &.pt-30 {
       padding-top: 30px;
     }
+
+    &.center {
+      justify-content: center;
+    }
   }
 
   .swiper_prodlist {
@@ -230,11 +234,19 @@ export const Section = styled.section`
       }
     }
 
+    .cate {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
     .name {
       height: 48px;
       margin-top: 5px;
       font-size: 1.6rem;
       font-weight: 500;
+      line-height: 2.3rem;
     }
 
     .desc {
@@ -255,10 +267,20 @@ export const Section = styled.section`
       .swiper-slide {
         display: flex;
         column-gap: 15px;
+        justify-content: center;
 
         a {
           display: block;
           width: 25%;
+
+          &.book {
+            text-align: center;
+
+            .desc {
+              height: 20px;
+              -webkit-line-clamp: 1;
+            }
+          }
         }
       }
     }
@@ -271,6 +293,7 @@ export const Section = styled.section`
     .title {
       justify-content: center;
       width: 100%;
+      height: 3rem;
       padding: 0 1.5rem;
       box-sizing: border-box;
       font-size: 1.6rem;
@@ -281,7 +304,8 @@ export const Section = styled.section`
       }
 
       &.pt-30 {
-        padding-top: 3rem;
+        padding-top: 0;
+        margin-top: 3rem;
       }
     }
 
@@ -317,6 +341,7 @@ export const Section = styled.section`
         height: 3.9rem;
         margin-top: 0.5rem;
         font-size: 1.4rem;
+        line-height: 2.2rem;
       }
 
       &.btn {
@@ -347,5 +372,47 @@ export const Section = styled.section`
         }
       }
     }
+  }
+`;
+
+export const CategoryList = styled.ul<{ className?: string }>`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 15px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  li {
+    width: fit-content;
+    height: 30px;
+    a {
+      padding: 8px 20px;
+      border-radius: 10px;
+      background-color: #f7f8fb;
+      font-size: 1.4rem;
+      color: #000;
+      transition: background-color 0.2s linear;
+    }
+
+    &:hover {
+      a {
+        background-color: #93999b;
+      }
+    }
+  }
+
+  &.mt-30 {
+    margin-top: 30px;
+  }
+
+  &.mt-50 {
+    margin-top: 50px;
+  }
+
+  &.mt-60 {
+    margin-top: 60px;
   }
 `;

@@ -6,6 +6,7 @@ import {
   alainListType,
   aladinBtnType,
 } from "@/types/aladinItems";
+import { libraryListType } from "@/types/library";
 
 export const fetchGitHubFile = async (file: string) => {
   const response = await axios.get(
@@ -48,4 +49,13 @@ export const fetchBanner = async (folder: string, file: string) => {
 
   const banners: bannerType = res.data;
   return res.status === 200 ? banners : undefined;
+};
+
+export const fetchLibrary = async (file: string) => {
+  const res = await axios.get(
+    `https://raw.githubusercontent.com/kimsohea/aladin_json/main/library/${file}`
+  );
+
+  const content: libraryListType = res.data;
+  return res.status === 200 ? content : undefined;
 };

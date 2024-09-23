@@ -31,9 +31,7 @@ export const Header = () => {
 
   return (
     <>
-      <HeaderWrap
-        className={activeIdx !== 99 && activeIdx !== null ? "active" : ""}
-      >
+      <HeaderWrap className={activeIdx !== 99 && activeIdx !== null ? "active" : ""}>
         <nav className="header_wrap">
           <h1 className="header_logo">
             <Link to="/">
@@ -41,19 +39,14 @@ export const Header = () => {
             </Link>
           </h1>
           {category && category.length > 0 && (
-            <ul
-              className="header_category"
-              onMouseLeave={handleActiveIdx(99, 99, 99)}
-            >
+            <ul className="header_category" onMouseLeave={handleActiveIdx(99, 99, 99)}>
               {category.map((cate01, idx) => (
                 <li
                   key={cate01.categoryName}
                   onMouseEnter={handleActiveIdx(idx, 0, 0)}
                   className={activeIdx === idx ? "active" : ""}
                 >
-                  <Link to={`/category/${cate01.categoryName}`}>
-                    {cate01.label}
-                  </Link>
+                  <Link to={`/category/${cate01.categoryName}`}>{cate01.label}</Link>
                   {cate01.children.length > 0 && (
                     <ul>
                       {cate01.children.map((cate02, idx1) => (
@@ -62,37 +55,21 @@ export const Header = () => {
                           onMouseEnter={handleActiveIdx(idx, idx1, 0)}
                           className={activeIdx2 === idx1 ? "active" : ""}
                         >
-                          {cate02.categoryName && (
-                            <Link to={`/category/${cate02.categoryName}`}>
-                              {cate02.label}
-                            </Link>
-                          )}
+                          {cate02.categoryName && <Link to={`/category/${cate02.categoryName}`}>{cate02.label}</Link>}
                           {cate02.children?.length > 0 && (
                             <ul>
                               {cate02.children.map((cate03, idx2) => (
                                 <li
                                   key={`${cate03.label}-${idx2}`}
-                                  onMouseEnter={handleActiveIdx(
-                                    idx,
-                                    idx1,
-                                    idx2
-                                  )}
-                                  className={
-                                    activeIdx3 === idx2 ? "active" : ""
-                                  }
+                                  onMouseEnter={handleActiveIdx(idx, idx1, idx2)}
+                                  className={activeIdx3 === idx2 ? "active" : ""}
                                 >
-                                  <Link to={`/category/${cate02.categoryName}`}>
-                                    {cate03.label}
-                                  </Link>
+                                  <Link to={`/category/${cate02.categoryName}`}>{cate03.label}</Link>
                                   {cate03.children?.length > 0 && (
                                     <ul>
                                       {cate03.children.map((cate04) => (
                                         <li key={cate04.label}>
-                                          <Link
-                                            to={`/category/${cate02.categoryName}`}
-                                          >
-                                            {cate04.label}
-                                          </Link>
+                                          <Link to={`/category/${cate02.categoryName}`}>{cate04.label}</Link>
                                         </li>
                                       ))}
                                     </ul>
@@ -164,10 +141,7 @@ export const MobileCategory = ({ isActive, setIsActive }: MobileCateProps) => {
   return (
     <>
       <MobileCategories className={isActive ? "active" : ""}>
-        <button
-          className="cate_btn"
-          onClick={() => setIsActive(!isActive)}
-        ></button>
+        <button className="cate_btn" onClick={() => setIsActive(!isActive)}></button>
         <nav className="cate_mobile">
           <h1 className="cate_logo" onClick={() => setIsActive(!isActive)}>
             <Link to="/">
@@ -192,7 +166,7 @@ export const MobileCategory = ({ isActive, setIsActive }: MobileCateProps) => {
             <ul className="cate_list">
               {category.map((cate01, idx1) => (
                 <li key={cate01.categoryName}>
-                  <Link to={`/category/${cate01.categoryName}`}>
+                  <Link to={`/category/${cate01.categoryName}`} onClick={() => setIsActive(!isActive)}>
                     {cate01.label}
                   </Link>
                   {cate01.children.length > 0 && (
@@ -210,7 +184,7 @@ export const MobileCategory = ({ isActive, setIsActive }: MobileCateProps) => {
                           }
                         >
                           {cate02.categoryName && (
-                            <Link to={`/category/${cate02.categoryName}`}>
+                            <Link to={`/category/${cate02.categoryName}`} onClick={() => setIsActive(!isActive)}>
                               {cate02.label}
                             </Link>
                           )}
@@ -218,7 +192,7 @@ export const MobileCategory = ({ isActive, setIsActive }: MobileCateProps) => {
                             <ul>
                               {cate02.children.map((cate03, idx2) => (
                                 <li key={`${cate03.label}-${idx2}`}>
-                                  <Link to={`/category/${cate02.categoryName}`}>
+                                  <Link to={`/category/${cate02.categoryName}`} onClick={() => setIsActive(!isActive)}>
                                     {cate03.label}
                                   </Link>
                                 </li>
