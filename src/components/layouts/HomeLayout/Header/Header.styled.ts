@@ -235,6 +235,17 @@ export const HeaderWrap = styled.header`
     }
   }
 
+  &:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6rem;
+    background-color: #fff;
+    z-index: -1;
+    content: "";
+  }
+
   &.active {
     &::before {
       position: absolute;

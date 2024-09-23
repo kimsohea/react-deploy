@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { SwiperBtn, SwiperImg } from "./BannerList.styled";
+import { SwiperBtn, SwiperImg, SubBnrSection } from "./BannerList.styled";
 
 import { fetchBanner } from "@/utils/fetchUtils";
 
@@ -16,7 +16,7 @@ export const MainBanners = ({ folder }: BannerProps) => {
   const swiperOption = {
     modules: [Navigation, Autoplay],
     autoplay: {
-      delay: 2500,
+      delay: 3500,
     },
     navigation: {
       prevEl: ".swiper_nav .prev",
@@ -60,7 +60,7 @@ export const SubBanners = ({ folder }: BannerProps) => {
   const swiperOption = {
     modules: [Autoplay, EffectFade],
     autoplay: {
-      delay: 2500,
+      delay: 3500,
     },
     effect: "fade",
     loop: true,
@@ -76,17 +76,17 @@ export const SubBanners = ({ folder }: BannerProps) => {
   return (
     <>
       {banner.length > 0 && (
-        <>
+        <SubBnrSection>
           <Swiper {...swiperOption}>
             {banner.map((item: string, idx: number) => (
               <SwiperSlide key={`sub_banner_${item}_${idx}`}>
-                <SwiperImg>
+                <figure>
                   <img src={item} alt="" />
-                </SwiperImg>
+                </figure>
               </SwiperSlide>
             ))}
           </Swiper>
-        </>
+        </SubBnrSection>
       )}
     </>
   );
