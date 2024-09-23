@@ -1,0 +1,16 @@
+import{s as A,r as t,C as I,a as o,b,j as s,S as i,c as M,L,d as P}from"./index-37bYJYG3.js";import{a as n,M as F,b as V,c as $,d as G}from"./BannerList-DdFilPNX.js";import{B as O}from"./BookNavigation-CYc7UzY3.js";const D=A.section`
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 50px;
+
+  .swiper-slide {
+    a {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+`,J=()=>s.jsx(F,{folder:"foreign"}),R=()=>{const[d,h]=t.useState(),l={modules:[G],autoplay:{delay:2500},slidesPerView:6,breakpoints:{320:{slidesPerView:3},640:{slidesPerView:6}}};return t.useEffect(()=>{P("foreign","event_bnr.json").then(a=>{a!==void 0&&h(a)})},[]),s.jsx(D,{children:s.jsx(V,{...l,children:d&&d.item.map((a,r)=>s.jsx($,{children:s.jsx(L,{to:"/category/local-books",children:s.jsx("img",{src:a,alt:""})})},`evt_bnr_${r}`))})})},q=()=>{const{state:d}=t.useContext(I),{category:h}=d,[l,a]=t.useState(),[r,v]=t.useState(),[j,S]=t.useState(),[x,N]=t.useState(),[m,y]=t.useState(),[f,C]=t.useState(),[u,w]=t.useState(),[p,B]=t.useState(),[g,E]=t.useState();return t.useEffect(()=>{o("foreign","bad_guys_list.json").then(e=>{e&&a(e)}),o("foreign","ani_list.json").then(e=>{e&&v(e)}),o("foreign","japan_list.json").then(e=>{e&&S(e)}),o("foreign","lexile_list.json").then(e=>{e&&N(e)}),o("foreign","sale_list.json").then(e=>{e&&y(e)}),o("foreign","inside_list.json").then(e=>{e&&C(e)}),b("foreign","md_items.json").then(e=>{e&&w(e)}),b("foreign","child_items.json").then(e=>{e&&B(e)})},[]),t.useEffect(()=>{h.filter(({label:c})=>c==="국내도서/외국도서").forEach(({children:c})=>{const _=c.find(({label:k})=>k==="외국도서");if(_!==void 0){const k=_.children[0].children;E(k)}})},[h]),s.jsxs(s.Fragment,{children:[s.jsx(O,{}),s.jsx(J,{}),u!==void 0&&s.jsxs(i,{children:[s.jsx("strong",{className:"title pt-30",children:"MD's Choice"}),s.jsx(n,{items:u})]}),m!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title",children:["외국도서 할인전",s.jsx("a",{href:m.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:m.item,isSale:!0})]}),p!==void 0&&s.jsxs(i,{children:[s.jsx("strong",{className:"title",children:"어린이 외서 지금 주목!"}),s.jsx(n,{items:p})]}),x!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title",children:["Lexile®지수",s.jsx("a",{href:x.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:x.item})]}),g!==void 0&&g.length>0&&s.jsx(M,{children:g.map((e,c)=>s.jsx("li",{children:s.jsx(L,{to:"/category/local-books",children:e.label})},`book_cate_${c}`))}),j!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title pt-30",children:["일본추천도서",s.jsx("a",{href:j.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:j.item})]}),r!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title",children:["애니메이션 굿즈",s.jsx("a",{href:r.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:r.item})]}),s.jsx(R,{}),f!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title",children:["인사이드아웃2",s.jsx("a",{href:f.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:f.item})]}),l!==void 0&&s.jsxs(i,{children:[s.jsxs("strong",{className:"title",children:["배드가이즈 액티비티",s.jsx("a",{href:l.link,target:"_blank",className:"link"})]}),s.jsx(n,{items:l.item})]})]})},Q=q;export{Q as default};
