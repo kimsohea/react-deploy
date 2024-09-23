@@ -282,6 +282,10 @@ export const HeaderWrap = styled.header`
         display: none;
       }
     }
+
+    &:after {
+      height: 5rem;
+    }
   }
 `;
 
