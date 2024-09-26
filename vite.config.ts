@@ -20,12 +20,5 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    proxy: {
-      aladin: {
-        target: "https://www.aladin.co.kr/ttb/api/",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/aladin/, ""),
-      },
-    },
   },
 });
