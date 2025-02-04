@@ -1,0 +1,16 @@
+import{d as v,r as t,C as I,f as P,a as r,b as S,j as e,S as n,c as M,L,e as V}from"./index-CpSIOR2n.js";import{a as i,A as F,M as O,b as T,c as $,d as R}from"./BannerList-BB1uyMkB.js";import{B as q}from"./BookNavigation-CwLsV49w.js";const z=v.section`
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 50px;
+
+  .swiper-slide {
+    a {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+`,D=()=>e.jsx(O,{folder:"book"}),G=()=>{const[c,d]=t.useState(),h={modules:[$],autoplay:{delay:2500},slidesPerView:6,breakpoints:{320:{slidesPerView:3},640:{slidesPerView:6}}};return t.useEffect(()=>{V("book","event_bnr.json").then(a=>{a!==void 0&&d(a)})},[]),e.jsx(z,{children:e.jsx(T,{...h,children:c&&c.item.map((a,o)=>e.jsx(R,{children:e.jsx(L,{to:"/category/local-books",children:e.jsx("img",{src:a,alt:""})})},`evt_bnr_${o}`))})})},Q=()=>{const{state:c}=t.useContext(I),{category:d}=c,[h,a]=t.useState(),[o,_]=t.useState(),[j,B]=t.useState(),[m,N]=t.useState(),[x,y]=t.useState(),[f,w]=t.useState(),[b,C]=t.useState(),[g,E]=t.useState(),[u,A]=t.useState();return t.useEffect(()=>{P("book","new_list.json").then(s=>{s&&a(s)}),r("book","culture_list.json").then(s=>{s&&_(s)}),r("book","essay_list.json").then(s=>{s&&B(s)}),r("book","blog_list.json").then(s=>{s&&N(s)}),r("book","sf_list.json").then(s=>{s&&y(s)}),r("book","best_list.json").then(s=>{s&&w(s)}),S("book","time_items.json").then(s=>{s&&C(s)}),S("book","sale_items.json").then(s=>{s&&E(s)})},[]),t.useEffect(()=>{d.filter(({label:l})=>l==="국내도서/외국도서").forEach(({children:l})=>{const p=l.find(({label:k})=>k==="국내도서");if(p!==void 0){const k=p.children[0].children;A(k)}})},[d]),e.jsxs(e.Fragment,{children:[e.jsx(q,{}),e.jsx(D,{}),o!==void 0&&e.jsxs(n,{children:[e.jsxs("strong",{className:"title pt-30",children:["새학기의 지식교양",e.jsx("a",{href:o.link,target:"_blank",className:"link"})]}),e.jsx(i,{items:o.item})]}),j!==void 0&&e.jsxs(n,{children:[e.jsxs("strong",{className:"title",children:["연휴에 읽으면 좋을 에세이",e.jsx("a",{href:j.link,target:"_blank",className:"link"})]}),e.jsx(i,{items:j.item})]}),u!==void 0&&u.length>0&&e.jsx(M,{children:u.map((s,l)=>e.jsx("li",{children:e.jsx(L,{to:"/category/local-books",children:s.label})},`book_cate_${l}`))}),h!==void 0&&e.jsxs(n,{children:[e.jsx("strong",{className:"title center pt-30",children:"새로 나온 책"}),e.jsx(F,{items:h,type:"book"})]}),b!==void 0&&e.jsxs(n,{children:[e.jsx("strong",{className:"title",children:"실시간 클릭 Top 10"}),e.jsx(i,{items:b})]}),f!==void 0&&e.jsxs(n,{children:[e.jsxs("strong",{className:"title",children:["신간 베스트",e.jsx("a",{href:f.link,target:"_blank",className:"link"})]}),e.jsx(i,{items:f.item})]}),m!==void 0&&e.jsxs(n,{children:[e.jsxs("strong",{className:"title",children:["북플 베스트",e.jsx("a",{href:m.link,target:"_blank",className:"link"})]}),e.jsx(i,{items:m.item})]}),e.jsx(G,{}),g!==void 0&&e.jsxs(n,{children:[e.jsx("strong",{className:"title",children:"정가 인하 / 할인 / 쿠폰"}),e.jsx(i,{items:g,isSale:!0})]}),x!==void 0&&e.jsxs(n,{children:[e.jsxs("strong",{className:"title",children:["제11회 SF어워드 수상후보작",e.jsx("a",{href:x.link,target:"_blank",className:"link"})]}),e.jsx(i,{items:x.item})]})]})};export{Q as default};
