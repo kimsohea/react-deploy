@@ -30,14 +30,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: "18"
+          node-version: "24"
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Build project
+        env:
+          VITE_GITGUB_TOCKEN: ${{ secrets.VITE_GITGUB_TOCKEN }}
+          VITE_ALADIN_TTBKEY: ${{ secrets.VITE_ALADIN_TTBKEY }}
         run: yarn build
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -46,9 +49,6 @@ jobs:
         with:
           # Upload entire repository
           path: "./dist"
-        env:
-          VITE_GITGUB_TOCKEN: ${{ secrets.VITE_GITGUB_TOCKEN }}
-          VITE_ALADIN_TTBKEY: ${{ secrets.VITE_ALADIN_TTBKEY }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
